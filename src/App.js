@@ -1,24 +1,37 @@
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import React, { Component } from 'react';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
+import {
+  pipe, get, is, concat, fromMaybe, allPass,
+} from 'sanctuary';
+import {
+  objOf, construct, isEmpty, complement,
+} from 'ramda';
 
 import GitHubRepos from './components/GitHubRepos';
-
 import logo from './logo.svg';
 import './App.css';
 
-const networkInterface = createNetworkInterface({
-  uri: 'https://api.github.com/graphql',
-  opts: {
-    headers: {
-      // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-      "Authorization": "Bearer YOUR_GITHUB_PERSONAL_ACCESS_TOKEN"
+const client = pipe([
+  get(allPass([
+    is(String),
+    complement(isEmpty),
+  ]), 'REACT_APP_GH_AUTH'),
+  fromMaybe(''),
+  concat('Bearer '),
+  (x) => ({
+    uri: 'https://api.github.com/graphql',
+    opts: {
+      headers: {
+        // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+        "Authorization": x,
+      }
     }
-  }
-});
-const client = new ApolloClient({
-  networkInterface
-});
+  }),
+  createNetworkInterface,
+  objOf('networkInterface'),
+  construct(ApolloClient),
+])(process.env);
 
 class App extends Component {
   render() {

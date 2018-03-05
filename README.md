@@ -14,3 +14,15 @@ and repository structure.
 Have fun -- we look forward to seeing what you come up with!
 
 _This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._
+
+# Implementation
+
+TODO
+
+## Environment Variables
+
+Env vars are prefixed in accordance with [`create-react-app`](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-custom-environment-variables)
+
+| Name | Default | Description |
+| --- | --- | --- |
+| REACT_APP_GH_AUTH | - | Authorization token for fetching from the GH API |

@@ -7,11 +7,14 @@
     "graphql-anywhere": "^3.1.0",
     "graphql-tag": "^2.4.2",
     "prop-types": "^15.5.10",
+    "ramda": "^0.25.0",
     "react": "^15.6.1",
     "react-apollo": "^1.4.15",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13",
-    "recompose": "^0.25.0"
+    "recompose": "^0.25.0",
+    "sanctuary": "^0.14.1",
+    "sanctuary-def": "^0.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
