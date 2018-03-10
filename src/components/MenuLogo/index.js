@@ -24,9 +24,9 @@ const PlusMenuImage = mergeProps({
 const ReactMenuImage = withProps({ src: react })(MenuImage);
 
 const MenuLogo = () => [
-  <GitHubMenuImage />,
-  <PlusMenuImage />,
-  <ReactMenuImage />
+  <GitHubMenuImage key='github' />,
+  <PlusMenuImage key='plus' />,
+  <ReactMenuImage key='react' />
 ];
 
 export default MenuLogo;
