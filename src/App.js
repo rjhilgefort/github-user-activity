@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import {
@@ -51,9 +51,9 @@ const enhance = pipe(
   )
 );
 
-const App = (({
+const App = ({
   client
-}) => (
+}: any) => (
   <ApolloProvider client={client}>
     <div className="App">
       <div className="App-header">
@@ -63,10 +63,6 @@ const App = (({
       <GitHubRepos />
     </div>
   </ApolloProvider>
-));
-
-App.propTypes = {
-  client: PropTypes.any.isRequired,
-};
+);
 
 export default enhance(App);

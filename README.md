@@ -15,9 +15,14 @@ Have fun -- we look forward to seeing what you come up with!
 
 _This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)._
 
+
+---
+
+
 # Implementation
 
 TODO
+
 
 ## Environment Variables
 
@@ -26,3 +31,8 @@ Env vars are prefixed in accordance with [`create-react-app`](https://github.com
 | Name | Default | Description |
 | --- | --- | --- |
 | REACT_APP_GH_AUTH | - | Authorization token for fetching from the GH API |
+
+
+## Notes
+
+- I swapped out React PropTypes for FLow. I can see runtime typechecking being useful as well, but I value static type checking quite a lot.

@@ -1,0 +1,16 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+<PROJECT_ROOT>/flow-typed/.*
+<PROJECT_ROOT>/libdefs.js
+
+[include]
+
+[libs]
+./libdefs.js
+
+[lints]
+
+[options]
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+
+[strict]
