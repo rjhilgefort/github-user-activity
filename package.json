@@ -1,7 +1,17 @@
 {
-  "name": "charter-challenge",
+  "name": "github-user-activity",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "flow:watch": "flow-watch",
+    "flow-typed:install": "flow-typed install",
+    "flow-typed:create-stub": "flow-typed create-stub"
+  },
   "dependencies": {
     "apollo-client": "^1.9.2",
     "graphql-anywhere": "^3.1.0",
@@ -16,18 +26,11 @@
     "sanctuary": "^0.14.1",
     "sanctuary-def": "^0.14.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "flow": "flow",
-    "flow:watch": "flow-watch"
-  },
   "devDependencies": {
     "apollo-test-utils": "^0.3.2",
     "eslint": "^4.7.1",
     "flow-bin": "^0.67.1",
+    "flow-typed": "^2.3.0",
     "flow-watch": "^1.1.2",
     "graphql": "^0.11.3",
     "graphql-tools": "^1.2.2",
