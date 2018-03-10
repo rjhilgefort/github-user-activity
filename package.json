@@ -18,13 +18,15 @@
     "graphql-tag": "^2.4.2",
     "prop-types": "^15.5.10",
     "ramda": "^0.25.0",
-    "react": "^15.6.1",
+    "react": "16.0.0",
     "react-apollo": "^1.4.15",
-    "react-dom": "^15.6.1",
+    "react-dom": "16.0.0",
     "react-scripts": "1.0.13",
     "recompose": "^0.25.0",
     "sanctuary": "^0.14.1",
-    "sanctuary-def": "^0.14.0"
+    "sanctuary-def": "^0.14.0",
+    "semantic-ui-css": "^2.3.0",
+    "semantic-ui-react": "^0.78.3"
   },
   "devDependencies": {
     "apollo-test-utils": "^0.3.2",

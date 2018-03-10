@@ -3,6 +3,9 @@ import React from 'react';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import {
+  Menu, Container,
+} from 'semantic-ui-react';
+import {
   withProps, branch, renderComponent,
 } from 'recompose';
 import {
@@ -16,8 +19,7 @@ import {
 } from './utils';
 import GitHubRepos from './components/GitHubRepos';
 import ErrorComponent from './components/ErrorComponent';
-import logo from './logo.svg';
-import './App.css';
+import MenuLogo from './components/MenuLogo';
 
 const ErrorMissingToken = withProps({
   error: new Error('Error setting up GitHub API client: Missing `GH_AUTH` token')
@@ -47,7 +49,7 @@ const enhance = pipe(
   }),
   branch(
     propSatisfies(notNil, 'client'),
-    renderComponent(ErrorMissingToken), // TODO: Wrongfully assumes reason
+    renderComponent(ErrorMissingToken), // TODO: Presumes reason all the time
   )
 );
 
@@ -55,12 +57,18 @@ const App = ({
   client
 }: any) => (
   <ApolloProvider client={client}>
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <GitHubRepos />
+    <div>
+      <Menu fixed='top' inverted>
+        <Container>
+          <Menu.Item as='a' header>
+            <MenuLogo />
+            GitHub User Activity
+          </Menu.Item>
+        </Container>
+      </Menu>
+      <Container text style={{ marginTip: '7em' }}>
+        <GitHubRepos />
+      </Container>
     </div>
   </ApolloProvider>
 );
