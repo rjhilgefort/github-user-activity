@@ -20,7 +20,7 @@ const App = ({
           </Menu.Item>
         </Container>
       </Menu>
-      <Container text style={{ marginTip: '7em' }}>
+      <Container text style={{ marginTop: '6em' }}>
         <GitHubRepos />
       </Container>
     </div>
