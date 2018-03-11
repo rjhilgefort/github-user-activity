@@ -6,7 +6,7 @@ import SiteHeader from './SiteHeader';
 const SiteLayout = ({
   children,
 }: {
-  children: React$Element<any>,
+  children: any,
 }) => (
   <div>
     <SiteHeader />
