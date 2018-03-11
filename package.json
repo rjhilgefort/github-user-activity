@@ -16,6 +16,7 @@
     "apollo-client": "^1.9.2",
     "graphql-anywhere": "^3.1.0",
     "graphql-tag": "^2.4.2",
+    "luxon": "^0.5.5",
     "ramda": "^0.25.0",
     "react": "16.0.0",
     "react-apollo": "^1.4.15",

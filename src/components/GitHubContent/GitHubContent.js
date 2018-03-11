@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
+import {
+  Container,
+} from 'semantic-ui-react';
+import UserHeader from '../UserHeader';
+import RepoTable from '../RepoTable';
+import type { Repos } from '../../types';
 
-type Repo = {
-  name: String,
-};
-type Repos = Array<Repo>;
 const GitHubContent = ({
   user,
   repos
@@ -12,19 +14,11 @@ const GitHubContent = ({
   user: String,
   repos: Repos,
 }) => (
-  <div>
-    {console.log(repos[13])}
-    <p>
-      <b>User:</b> {user}
-    </p>
-    <ul>
-      {repos && repos.map((repo, index) => (
-        <li key={index}>
-          {repo.name}
-        </li>
-      ))}
-    </ul>
-  </div>
+  <Container>
+    <UserHeader user={user} />
+    {console.log(repos[14])}
+    <RepoTable repos={repos} />
+  </Container>
 );
 
 export default GitHubContent;

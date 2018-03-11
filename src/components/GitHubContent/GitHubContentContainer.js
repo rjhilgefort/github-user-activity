@@ -25,11 +25,12 @@ const GET_GITHUB_REPOS = gql`
         }
       ) {
         nodes {
-          url,
           name,
-          nameWithOwner,
+          url,
+          pushedAt,
           owner {
-            login 
+            login,
+            url
           },
           primaryLanguage {
             name,
