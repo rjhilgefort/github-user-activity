@@ -14,6 +14,17 @@ import {
 import AppError from '../AppError';
 import App from './App';
 
+const createNetworkInterfaceParams = (
+  Authorization: String
+) => ({
+  uri: 'https://api.github.com/graphql',
+  opts: {
+    headers: {
+      Authorization,
+    }
+  }
+});
+
 const enhance = compose(
   withProps({
     client: pipe(
@@ -22,14 +33,7 @@ const enhance = compose(
         notEmpty,
       ]), 'REACT_APP_GH_AUTH'),
       map(concat('Bearer ')),
-      map((x) => ({
-        uri: 'https://api.github.com/graphql',
-        opts: {
-          headers: {
-            "Authorization": x,
-          }
-        }
-      })),
+      map(createNetworkInterfaceParams),
       map(createNetworkInterface),
       map(objOf('networkInterface')),
       map(construct(ApolloClient)),
