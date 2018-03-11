@@ -1,11 +1,7 @@
 // @flow
 import React from 'react';
-import {
-  withProps,
-} from 'recompose';
-import {
-  Image,
-} from 'semantic-ui-react';
+import { withProps } from 'recompose';
+import { Image } from 'semantic-ui-react';
 import { mergeProps } from '../../hoc';
 import github from './github.png';
 import plus from './plus-red.png';
