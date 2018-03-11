@@ -2,19 +2,35 @@ import { gql, graphql } from 'react-apollo';
 import { branch, renderComponent } from 'recompose';
 import {
   pathOr, applySpec, compose, path, propEq, propSatisfies,
+  trim,
 } from 'ramda';
 import {
-  notNil,
+  get, is, fromMaybe, allPass, map,
+} from 'sanctuary';
+import {
+  notNil, notEmpty,
 } from '../../utils';
 import Loading from '../Loading';
 import ErrorComponent from '../ErrorComponent';
 import GitHubContent from './GitHubContent';
 
+const GH_USER = compose(
+  fromMaybe('gaearon'),
+  map(trim),
+  get(
+    allPass([
+      is(String),
+      notEmpty,
+    ]),
+    'REACT_APP_GH_USER'
+  ),
+)(process.env)
+
 // https://developer.github.com/v4/
 // TODO: Allow user to be determined from field
 const GET_GITHUB_REPOS = gql`
   query GetGitHubRepos {
-    user(login: "rjhilgefort") {
+    user(login: "${GH_USER}") {
       login
       repositoriesContributedTo(
         first: 25,

@@ -16,7 +16,6 @@ const GitHubContent = ({
 }) => (
   <Container>
     <UserHeader user={user} />
-    {console.log(repos[14])}
     <RepoTable repos={repos} />
   </Container>
 );

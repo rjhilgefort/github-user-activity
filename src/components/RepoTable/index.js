@@ -1,8 +1,8 @@
 import React from 'react';
-// import { withProps } from 'recompose';
-import { Table } from 'semantic-ui-react';
+import { Table, Label, } from 'semantic-ui-react';
 import {
-  pathOr, compose, join, map, invoker, reject, equals,
+  pathOr, compose, map, invoker, reject, 
+  propEq, anyPass, unless, equals,
 } from 'ramda';
 import { DateTime } from 'luxon';
 import type { Repos, Repo, Url } from '../../types';
@@ -10,20 +10,48 @@ const {
   Header, Body, Row, HeaderCell, Cell,
 } = Table;
 
+const LanguageLabel = ({
+  name,
+  color
+}: {
+  name: String,
+  color: String,
+}) => (
+  <Label
+    style={{
+      background: color,
+      color: 'white',
+      marginTop: '2px',
+      marginBottom: '2px',
+    }}
+  >
+    {name}
+  </Label>
+);
 const languageFromRepo = (
   repo: Repo
 ) => compose(
-  pathOr('', ['primaryLanguage', 'name'])
+  unless(
+    equals(''),
+    (x) => <LanguageLabel {...x} />,
+  ),
+  pathOr('', ['primaryLanguage']),
+
 )(repo);
 
 const languageListFromRepo = (
   repo: Repo
-) => compose(
-  join(', '),
-  reject(compose(equals, languageFromRepo)(repo)),
-  map(pathOr('', ['name'])),
-  pathOr([], ['languages', 'nodes']),
-)(repo);
+) => {
+  const primaryLanguage = pathOr('', ['primaryLanguage', 'name'], repo);
+  return compose(
+    map((x) => <LanguageLabel key={x.name} {...x} />),
+    reject(anyPass([
+      propEq('name', primaryLanguage),
+      propEq('name', ''),
+    ])),
+    pathOr([], ['languages', 'nodes']),
+  )(repo);
+};
 
 const pushedAtFromRepo = (
   repo: Repo
@@ -42,7 +70,7 @@ const A = ({ url, text }: AProps) => (
   <a href={url}>{text}</a>
 );
 
-const CellLink = ({ ...props }: AProps) => (
+const CellLink = (props: AProps) => (
   <Cell><A {...props} /></Cell>
 );
 
