@@ -16,6 +16,13 @@ Set the environment variables however you would like, but the easiest for develo
 | `REACT_APP_GH_AUTH` | - | Authorization token for fetching from the GH API. Missing token will show error page. |
 | `REACT_APP_GH_USER` | "gaearon" | Authorization token for fetching from the GH API. Missing token will show error page. |
 
+## Screen Shots
+
+![](ss-gaearon.png)
+![](ss-error.png)
+
+---
+
 ## Flow
 
 This project uses Flow instead of  React PropTypes. I can see runtime typechecking being useful as well, but I value static type checking quite a lot. Flow was just a slight bit easier to get going because CRA already has support in their webpack config. Having something like Flow integrated can stand in place for a lot of simple interface style unit testing.
