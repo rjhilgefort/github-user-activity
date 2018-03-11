@@ -14,7 +14,7 @@ Set the environment variables however you would like, but the easiest for develo
 | Name | Default | Description |
 | :--- | :---: | :--- |
 | `REACT_APP_GH_AUTH` | - | Authorization token for fetching from the GH API. Missing token will show error page. |
-| `REACT_APP_GH_USER` | "gaearon" | Authorization token for fetching from the GH API. Missing token will show error page. |
+| `REACT_APP_GH_USER` | "gaearon" | GitHub User to search for. |
 
 ## Screen Shots
 
