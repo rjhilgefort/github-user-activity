@@ -1,33 +1,17 @@
 import React from 'react';
-import { Table, Label, } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import {
-  pathOr, compose, map, invoker, reject, 
+  pathOr, compose, map, invoker, reject,
   propEq, anyPass, unless, equals,
 } from 'ramda';
 import { DateTime } from 'luxon';
 import type { Repos, Repo, Url } from '../../types';
+import LanguageLabel from '../LanguageLabel';
+
 const {
   Header, Body, Row, HeaderCell, Cell,
 } = Table;
 
-const LanguageLabel = ({
-  name,
-  color
-}: {
-  name: String,
-  color: String,
-}) => (
-  <Label
-    style={{
-      background: color,
-      color: 'white',
-      marginTop: '2px',
-      marginBottom: '2px',
-    }}
-  >
-    {name}
-  </Label>
-);
 const languageFromRepo = (
   repo: Repo
 ) => compose(
@@ -36,7 +20,6 @@ const languageFromRepo = (
     (x) => <LanguageLabel {...x} />,
   ),
   pathOr('', ['primaryLanguage']),
-
 )(repo);
 
 const languageListFromRepo = (
