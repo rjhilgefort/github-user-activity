@@ -1,6 +1,6 @@
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import {
-  objOf, construct, pipe, propSatisfies,
+  objOf, construct, pipe, compose, propSatisfies, isNil,
 } from 'ramda';
 import {
   get, is, concat, maybeToNullable, allPass, map,
@@ -9,16 +9,12 @@ import {
   withProps, branch, renderComponent,
 } from 'recompose';
 import {
-  notNil, notEmpty,
+  notEmpty,
 } from '../../utils';
+import AppError from '../AppError';
 import App from './App';
-import ErrorComponent from '../ErrorComponent';
 
-const ErrorMissingToken = withProps({
-  error: new Error('Error setting up GitHub API client: Missing `GH_AUTH` token')
-})(ErrorComponent);
-
-const enhance = pipe(
+const enhance = compose(
   withProps({
     client: pipe(
       get(allPass([
@@ -41,8 +37,8 @@ const enhance = pipe(
     )(process.env)
   }),
   branch(
-    propSatisfies(notNil, 'client'),
-    renderComponent(ErrorMissingToken), // TODO: Presumes reason all the time
+    propSatisfies(isNil, 'client'),
+    renderComponent(AppError), // TODO: Presumes reason all the time
   )
 );
 
