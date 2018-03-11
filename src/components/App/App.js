@@ -2,14 +2,14 @@
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import SiteLayout from '../SiteLayout';
-import GitHubRepos from '../GitHubRepos';
+import GitHubContent from '../GitHubContent';
 
 const App = ({
   client
 }: any) => (
   <ApolloProvider client={client}>
     <SiteLayout>
-      <GitHubRepos />
+      <GitHubContent />
     </SiteLayout>
   </ApolloProvider>
 );

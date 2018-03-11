@@ -5,7 +5,7 @@ type Repo = {
   name: String,
 };
 type Repos = Array<Repo>;
-const RepoList = ({
+const GitHubContent = ({
   user,
   repos
 }: {
@@ -27,4 +27,4 @@ const RepoList = ({
   </div>
 );
 
-export default RepoList;
+export default GitHubContent;

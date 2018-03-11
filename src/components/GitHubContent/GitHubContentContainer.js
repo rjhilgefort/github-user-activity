@@ -5,10 +5,10 @@ import {
 } from 'ramda';
 import {
   notNil,
-} from '../utils';
-import Loading from './Loading';
-import RepoList from './RepoList';
-import ErrorComponent from './ErrorComponent';
+} from '../../utils';
+import Loading from '../Loading';
+import ErrorComponent from '../ErrorComponent';
+import GitHubContent from './GitHubContent';
 
 // https://developer.github.com/v4/
 // TODO: Allow user to be determined from field
@@ -64,4 +64,4 @@ export default compose(
     propSatisfies(notNil, 'error'),
     renderComponent(ErrorComponent),
   )
-)(RepoList);
+)(GitHubContent);
